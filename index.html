@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNK - Perlindungan Nusantara Komunitas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Black Hole */
+        .black-hole-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            width: 400px;
+            height: 400px;
+        }
+
+        .black-hole {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #000 30%, #1a0b2e 60%, #4b0082 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px #4b0082, inset 0 0 100px #000;
+            animation: rotateBH 10s linear infinite;
+        }
+
+        .event-horizon {
+            position: absolute;
+            top: -10%; left: -10%;
+            width: 120%; height: 120%;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            border-radius: 45% 55% 50% 50%;
+            animation: swirl 6s linear infinite;
+        }
+
+        @keyframes rotateBH {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes swirl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="black-hole-container">
+        <div class="black-hole"></div>
+        <div class="event-horizon"></div>
+    </div>
+
+    <div id="page1" class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+        <h1 class="text-6xl font-bold mb-2 tracking-tighter text-purple-500">PNK</h1>
+        <p class="text-xl mb-12 tracking-widest text-gray-300">PERLINDUNGAN NUSANTARA KOMUNITAS</p>
+        
+        <div class="flex flex-col md:flex-row gap-6 w-full max-w-md">
+            <button onclick="nextPage(1)" class="glass-card hover:bg-purple-900 transition p-6 flex-1 text-xl font-bold border-purple-500 border-2">
+                KOMUNITAS 1
+            </button>
+            <button onclick="nextPage(2)" class="glass-card hover:bg-indigo-900 transition p-6 flex-1 text-xl font-bold border-indigo-500 border-2">
+                KOMUNITAS 2
+            </button>
+        </div>
+    </div>
+
+    <div id="page2" class="min-h-screen flex flex-col items-center justify-center p-6 hidden">
+        <div class="glass-card p-8 w-full max-w-lg">
+            <h2 class="text-2xl font-bold mb-6 text-center">PERKENALKAN DIRI ANDA</h2>
+            <div class="space-y-4 text-sm">
+                <div>
+                    <label>Nama Lengkap</label>
+                    <input type="text" class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1 focus:border-purple-500 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label>Umur</label>
+                        <input type="number" class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1">
+                    </div>
+                    <div>
+                        <label>Tanggal Lahir</label>
+                        <input type="date" class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1">
+                    </div>
+                </div>
+                <div>
+                    <label>Asal Daerah</label>
+                    <input type="text" class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1">
+                </div>
+                <div>
+                    <label>Akun TikTok</label>
+                    <input type="text" placeholder="@username" class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1">
+                </div>
+                <div>
+                    <label>Jenis Kelamin</label>
+                    <div class="flex gap-4 mt-1">
+                        <label><input type="radio" name="jk" value="L"> Laki-laki</label>
+                        <label><input type="radio" name="jk" value="P"> Perempuan</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Alasan Bergabung</label>
+                    <textarea class="w-full bg-black/50 border border-gray-700 rounded p-2 mt-1" rows="3"></textarea>
+                </div>
+                <button onclick="nextPage(null)" class="w-full bg-purple-600 hover:bg-purple-700 p-3 rounded font-bold transition mt-4">
+                    VERIFIKASI DATA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="page3" class="min-h-screen flex flex-col items-center justify-center p-6 hidden text-center">
+        <div class="glass-card p-8 w-full max-w-lg">
+            <div class="mb-8">
+                <i class="fas fa-shield-halved text-5xl text-cyan-400 mb-4"></i>
+                <h3 class="text-xl font-bold">Fitur Keamanan Lebih Ketat</h3>
+                <p class="text-gray-400 text-sm">Enkripsi end-to-end dengan sistem proteksi data Nusantara.</p>
+            </div>
+
+            <div class="mb-8">
+                <i class="fas fa-microchip text-5xl text-purple-500 mb-4"></i>
+                <h3 class="text-xl font-bold">Fitur AI Sangat Cerdas</h3>
+                <p class="text-gray-400 text-sm">Asisten cerdas yang memantau keamanan grup 24/7.</p>
+            </div>
+
+            <hr class="border-gray-800 mb-8">
+
+            <p class="mb-6 font-semibold">PILIH WHATSAPP UNTUK BERGABUNG:</p>
+            <div class="flex flex-col gap-4">
+                <a id="wa-biasa" href="#" class="flex items-center justify-center gap-3 bg-green-600 hover:bg-green-700 p-4 rounded-xl transition font-bold">
+                    <i class="fab fa-whatsapp text-2xl"></i> WHATSAPP BIASA
+                </a>
+                <a id="wa-bisnis" href="#" class="flex items-center justify-center gap-3 bg-green-800 hover:bg-green-900 p-4 rounded-xl transition font-bold">
+                    <i class="fas fa-briefcase text-xl"></i> WHATSAPP BISNIS
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedCommunity = 1;
+        const links = {
+            1: "https://chat.whatsapp.com/Gs6nXWDJVEw9YVCzjBFWHi?mode=gi_t",
+            2: "https://chat.whatsapp.com/DTWUNI8Gv4e4B41DO9JoDA?mode=gi_t"
+        };
+
+        function nextPage(commNum) {
+            if(commNum) selectedCommunity = commNum;
+
+            const p1 = document.getElementById('page1');
+            const p2 = document.getElementById('page2');
+            const p3 = document.getElementById('page3');
+
+            if (!p1.classList.contains('hidden')) {
+                p1.classList.add('hidden');
+                p2.classList.remove('hidden');
+            } else if (!p2.classList.contains('hidden')) {
+                p2.classList.add('hidden');
+                p3.classList.remove('hidden');
+                
+                // Set link berdasarkan komunitas yang dipilih di awal
+                const finalLink = links[selectedCommunity];
+                document.getElementById('wa-biasa').href = finalLink;
+                document.getElementById('wa-bisnis').href = finalLink;
+            }
+        }
+    </script>
+</body>
+</html>
